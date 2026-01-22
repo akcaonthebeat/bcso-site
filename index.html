@@ -3,162 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Los Santos County Sheriff Dept.</title>
+    <title>BCSO | Blaine County Sheriff's Office</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
     <style>
-        /* --- TEMEL AYARLAR --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
         body {
-            font-family: 'Montserrat', sans-serif;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #0a0e17; /* Koyu lacivert zemin */
-            /* İsterseniz buraya gerçek bir arka plan resmi ekleyebilirsiniz:
-               background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('LINK_BURAYA'); */
-            background-image: radial-gradient(circle at center, #1a2a40 0%, #050810 100%);
+            /* YÜKSEK KALİTELİ ARKA PLAN GÖRSELİ */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+                        url('https://wallpaperaccess.com/full/4161727.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: #fff;
             overflow: hidden;
         }
 
-        /* --- ANA KAPTEYNER & ANİMASYON --- */
-        .container {
-            text-align: center;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.05); /* Hafif şeffaf kutu */
-            border-radius: 20px;
+        /* CAM EFEKTİ PANELİ */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px); /* Arkadaki görseli bulanıklaştırır */
-            
-            /* Giriş Animasyonu Tanımlama */
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s ease-out forwards;
+            border-radius: 30px;
+            padding: 60px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            /* GİRİŞ ANİMASYONU */
+            animation: containerEntrance 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
 
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes containerEntrance {
+            from { opacity: 0; transform: scale(0.8) translateY(50px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* --- BAŞLIKLAR VE LOGO --- */
-        .badge-icon {
-            font-size: 80px;
-            color: #d4af37; /* Altın sarısı */
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        .logo-area i {
+            font-size: 90px;
+            color: #f1c40f;
+            filter: drop-shadow(0 0 15px rgba(241, 196, 15, 0.5));
+            margin-bottom: 25px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            font-size: 3.5rem;
+            font-weight: 900;
             text-transform: uppercase;
-            background: linear-gradient(to right, #ffffff, #d4af37);
+            letter-spacing: 5px;
+            margin-bottom: 5px;
+            background: linear-gradient(to bottom, #fff 0%, #bdc3c7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        p.slogan {
-            font-size: 1.2rem;
-            color: #a0aec0;
+        p.subtitle {
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            color: #f1c40f;
             margin-bottom: 40px;
-            font-weight: 600;
+            font-weight: 300;
+            text-transform: uppercase;
         }
 
-        /* --- BUTON GRUBU --- */
-        .button-group {
+        .btn-container {
             display: flex;
+            flex-direction: column;
             gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap; /* Mobilde alt alta geçsin */
         }
 
-        /* --- BUTON TASARIMI --- */
-        .btn {
-            text-decoration: none;
-            padding: 15px 30px;
-            border-radius: 50px;
+        .main-btn {
+            position: relative;
+            padding: 18px 40px;
+            font-size: 1.1rem;
             font-weight: 600;
-            font-size: 1rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 15px;
+            transition: all 0.4s ease;
             display: flex;
             align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease; /* Buton animasyon hızı */
-            position: relative;
+            justify-content: center;
+            gap: 15px;
             overflow: hidden;
-            border: none;
-            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .btn i {
-            font-size: 1.2rem;
-        }
+        /* BAŞVURU BUTONU - MAVİ PARLAMA */
+        .btn-apply { background: rgba(20, 50, 100, 0.6); }
+        .btn-apply:hover { background: #1e3799; box-shadow: 0 0 30px rgba(30, 55, 153, 0.6); transform: translateY(-3px); }
 
-        /* Başvuru Butonu Stili */
-        .btn-apply {
-            background: linear-gradient(45deg, #1e3c72, #2a5298);
-            color: white;
-            box-shadow: 0 4px 15px rgba(30, 60, 114, 0.4);
-        }
+        /* DISCORD BUTONU - MOR PARLAMA */
+        .btn-discord { background: rgba(88, 101, 242, 0.4); }
+        .btn-discord:hover { background: #5865F2; box-shadow: 0 0 30px rgba(88, 101, 242, 0.6); transform: translateY(-3px); }
 
-        /* Discord Butonu Stili */
-        .btn-discord {
-            background: linear-gradient(45deg, #5865F2, #4752C4); /* Discord renkleri */
-            color: white;
-            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+        /* PARLAMA EFEKTİ (Haraketli Işık) */
+        .main-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
         }
-
-        /* --- BUTON HOVER (ÜZERİNE GELİNCE) ANİMASYONLARI --- */
-        .btn:hover {
-            transform: translateY(-5px) scale(1.05); /* Yukarı kaldır ve biraz büyüt */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .btn-apply:hover {
-            box-shadow: 0 10px 25px rgba(30, 60, 114, 0.6);
-        }
-
-        .btn-discord:hover {
-            box-shadow: 0 10px 25px rgba(88, 101, 242, 0.6);
-        }
-        
-        /* Butonun içindeki ikon animasyonu */
-        .btn:hover i {
-            transform: rotate(-10deg) scale(1.2);
-            transition: all 0.3s ease;
-        }
+        .main-btn:hover::before { left: 100%; }
 
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="badge-icon">
-            <i class="fas fa-shield-alt"></i>
+    <div class="glass-panel">
+        <div class="logo-area">
+            <i class="fas fa-star-of-life"></i>
         </div>
-        
-        <h1>County Sheriff</h1>
-        <p class="slogan">"Hizmet Et, Koru, Adaleti Sağla."</p>
+        <h1>BCSO</h1>
+        <p class="subtitle">Sheriff's Office</p>
 
-        <div class="button-group">
-            <a href="https://google.forms/LINKINIZ" target="_blank" class="btn btn-apply">
-                <i class="fas fa-file-contract"></i> Departman Başvurusu
+        <div class="btn-container">
+            <a href="BURAYA_FORM_LINKI" class="main-btn btn-apply">
+                <i class="fas fa-pen-nib"></i> Katılım Formu
             </a>
-
-            <a href="https://discord.gg/DAVETKODUNUZ" target="_blank" class="btn btn-discord">
-                <i class="fab fa-discord"></i> Discord Sunucumuz
+            <a href="BURAYA_DISCORD_LINKI" class="main-btn btn-discord">
+                <i class="fab fa-discord"></i> Discord Sunucusu
             </a>
         </div>
     </div>
